@@ -11,6 +11,9 @@ CSS:
 - Same for entire system
 - Slight changes in question page
 
+JS:
+- 1 file
+
 HTML:
 - login.php
 - signup.php
