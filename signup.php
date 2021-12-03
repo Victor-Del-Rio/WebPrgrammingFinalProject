@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>CSCI Lab Login</title>
+  <title>CSCI Sign Up Form</title>
 </head>
 <style type="text/css">.error{color: red;}</style>
 <style>
