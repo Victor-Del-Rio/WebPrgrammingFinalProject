@@ -115,6 +115,24 @@ echo "<h2>User Inputs:</h2>";
 $userRv = $username;
 $passRv = $password;
 echo $userRv . " " . $passRv;
+
+# Variables for database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "finaldb";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Insert Username and Password using Prepared statement
+$stmt = $conn->prepare("INSERT INTO test (username, password) VALUES (?, ?)");
+$stmt->bind_param("ss", $userRv, $passRv);
+$stmt->execute()
+
 ?>
 </body>
 </html>
