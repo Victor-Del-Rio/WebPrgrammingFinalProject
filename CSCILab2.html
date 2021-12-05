@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.submit {   
+       background-color: lightgreen;
+       width: 100px;
+       height: 30px;  
+        color: black;   
+        border: none;   
+        cursor: pointer; 
+        }
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  margin: auto;
+  width:  100px;
+  /*height:  100px;*/
+  align-content: center;
+  text-align: center;
+  /*padding-left: 200px;*/
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+  text-align: center;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .submit:hover {
+  background-color: lightblue;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.show {display: block;}
+/*
+.dropdown:hover .dropdown-content {
+  display: block;
+}*/
+</style>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+function myFunction2() {
+  document.getElementById("myDropdown2").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+      <center>
+        <h1> Computer Science Labs </h1>
+    </center>
+    <p>Select a class and lab from the dropdowns below</p>
+
+<div class="navbar">
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn" style="width: 100px">Class 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#">CSCI 195</a>
+      <a href="#">CSCI 295</a>
+      <a href="#">CSCI 330</a>
+    </div>
+  </div>
+</div>
+<div class="navbar">
+  <div class="dropdown">
+    <button onclick="myFunction2()" class="dropbtn" style="width: 100px">Lab 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div id="myDropdown2" class="dropdown-content">
+      <a href="#">Lab 1</a>
+      <a href="#">Lab 2</a>
+      <a href="#">Lab 3</a>
+    </div>
+  </div> <br><br>
+    <input class="submit" type="submit" name="submit" value="Submit"> 
+</div>
+
+
+
+</body>
+</html>
