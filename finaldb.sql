@@ -17,15 +17,15 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
+-- 
 -- Database: `finaldb`
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table `classes`
---
+-- 
 
 CREATE TABLE `classes` (
   `pk` int(255) NOT NULL,
@@ -33,15 +33,15 @@ CREATE TABLE `classes` (
   `Section` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
+-- 
 -- RELATIONSHIPS FOR TABLE `classes`:
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table `labs`
---
+-- 
 
 CREATE TABLE `labs` (
   `pk` int(255) NOT NULL,
@@ -69,19 +69,19 @@ CREATE TABLE `labs` (
   `answer10` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
+-- 
 -- RELATIONSHIPS FOR TABLE `labs`:
 --   `className`
 --       `classes` -> `className`
 --   `labName`
 --       `studentanswers` -> `labName`
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table `registration`
---
+-- 
 
 CREATE TABLE `registration` (
   `pk` int(255) NOT NULL,
@@ -89,19 +89,19 @@ CREATE TABLE `registration` (
   `className` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
+-- 
 -- RELATIONSHIPS FOR TABLE `registration`:
 --   `beeCard`
 --       `users` -> `beeCard`
 --   `className`
 --       `classes` -> `className`
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table `studentanswers`
---
+-- 
 
 CREATE TABLE `studentanswers` (
   `pk` int(255) NOT NULL,
@@ -119,17 +119,17 @@ CREATE TABLE `studentanswers` (
   `answer10` mediumtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
+-- 
 -- RELATIONSHIPS FOR TABLE `studentanswers`:
 --   `beeCard`
 --       `users` -> `beeCard`
---
+-- 
 
 -- --------------------------------------------------------
 
---
+-- 
 -- Table structure for table `users`
---
+-- 
 
 CREATE TABLE `users` (
   `beeCard` int(25) NOT NULL,
@@ -138,13 +138,13 @@ CREATE TABLE `users` (
   `password` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
+-- 
 -- RELATIONSHIPS FOR TABLE `users`:
---
+-- 
 
---
+-- 
 -- Dumping data for table `users`
---
+-- 
 
 INSERT INTO `users` (`beeCard`, `name`, `email`, `password`) VALUES
 (82323, 'onrnroovljno2ln', 'jopgnwovwl', 'wjbewekv'),
@@ -154,96 +154,96 @@ INSERT INTO `users` (`beeCard`, `name`, `email`, `password`) VALUES
 (4092525, 'vbivwvwu', 'skdv sd jvdkj', 'jgbwqojvqo'),
 (34853535, 'idbsivsd', 'asjaicbub', 'ubacau');
 
---
+-- 
 -- Indexes for dumped tables
---
+-- 
 
---
+-- 
 -- Indexes for table `classes`
---
+-- 
 ALTER TABLE `classes`
   ADD PRIMARY KEY (`pk`),
   ADD UNIQUE KEY `foreign` (`className`);
 
---
+-- 
 -- Indexes for table `labs`
---
+-- 
 ALTER TABLE `labs`
   ADD PRIMARY KEY (`pk`),
   ADD UNIQUE KEY `foreign` (`labName`,`className`),
   ADD KEY `className` (`className`);
 
---
+-- 
 -- Indexes for table `registration`
---
+-- 
 ALTER TABLE `registration`
   ADD PRIMARY KEY (`pk`),
   ADD UNIQUE KEY `foreign` (`beeCard`,`className`),
   ADD KEY `className` (`className`);
 
---
+-- 
 -- Indexes for table `studentanswers`
---
+-- 
 ALTER TABLE `studentanswers`
   ADD PRIMARY KEY (`pk`),
   ADD UNIQUE KEY `foreign` (`labName`,`beeCard`),
   ADD KEY `beeCard` (`beeCard`);
 
---
+-- 
 -- Indexes for table `users`
---
+-- 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`beeCard`);
 
---
+-- 
 -- AUTO_INCREMENT for dumped tables
---
+-- 
 
---
+-- 
 -- AUTO_INCREMENT for table `classes`
---
+-- 
 ALTER TABLE `classes`
   MODIFY `pk` int(255) NOT NULL AUTO_INCREMENT;
 
---
+-- 
 -- AUTO_INCREMENT for table `labs`
---
+-- 
 ALTER TABLE `labs`
   MODIFY `pk` int(255) NOT NULL AUTO_INCREMENT;
 
---
+-- 
 -- AUTO_INCREMENT for table `registration`
---
+-- 
 ALTER TABLE `registration`
   MODIFY `pk` int(255) NOT NULL AUTO_INCREMENT;
 
---
+-- 
 -- AUTO_INCREMENT for table `studentanswers`
---
+-- 
 ALTER TABLE `studentanswers`
   MODIFY `pk` int(255) NOT NULL AUTO_INCREMENT;
 
---
+-- 
 -- Constraints for dumped tables
---
+-- 
 
---
+-- 
 -- Constraints for table `labs`
---
+-- 
 ALTER TABLE `labs`
   ADD CONSTRAINT `labs_ibfk_1` FOREIGN KEY (`className`) REFERENCES `classes` (`className`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `labs_ibfk_2` FOREIGN KEY (`labName`) REFERENCES `studentanswers` (`labName`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
+-- 
 -- Constraints for table `registration`
---
+-- 
 ALTER TABLE `registration`
   ADD CONSTRAINT `registration_ibfk_1` FOREIGN KEY (`beeCard`) REFERENCES `users` (`beeCard`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `registration_ibfk_2` FOREIGN KEY (`className`) REFERENCES `classes` (`className`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
---
+-- 
 -- Constraints for table `studentanswers`
---
+-- 
 ALTER TABLE `studentanswers`
   ADD CONSTRAINT `studentanswers_ibfk_1` FOREIGN KEY (`beeCard`) REFERENCES `users` (`beeCard`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
