@@ -27,7 +27,7 @@
 	echo $course . " " . $lab;
 	echo '<button onclick = "newWindow()"> newlab</button>';
 	echo "<br>";
-	echo '<script>window.location.href = "http://localhost/WPFinal/'.$course.'/'.$lab.'.php";</script>';
+	echo '<script>window.location.href = "http://localhost/WPFinal/'.$course.$lab.'.html";</script>';
 
 	
 ?>
