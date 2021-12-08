@@ -4,11 +4,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
     <style>
         body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  background-color: lightblue;
 }
 
 .submit {   
@@ -49,7 +51,7 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn, .submit:hover {
-  background-color: lightblue;
+  background-color: seagreen;
 }
 
 
@@ -84,15 +86,20 @@ label, select{
         <h1> Computer Science Labs </h1>
     </center>
     <p>Select a class and lab from the dropdowns below</p>
+    <div id="course_select" style="display: none;">
+      <p id="csci195"></p>
+      <p id="csci295"></p>
+      <p id="csci330"></p>
+    </div>
     <div class="navbar">
         <div class="dropdown">
             <?php
             echo '<form action="labs.php" method="post"><br>
                   <label for="courses"><b>Choose a course:</b></label>
                   <select name="courses" id="courses">
-                  <option class="droptext" value="CSCI 195">CSCI 195</option>
-                  <option class="droptext" value="CSCI 295">CSCI 295</option>
-                  <option class="droptext" value="CSCI 330">CSCI 330</option>
+                  <option class="droptext" value="CSCI195">CSCI 195</option>
+                  <option class="droptext" value="CSCI295">CSCI 295</option>
+                  <option class="droptext" value="CSCI330">CSCI 330</option>
                   </select><br>
                   <br> </div>
                   <div class="navbar">
