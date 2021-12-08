@@ -56,7 +56,7 @@
 .show {display: block;}
 
 
-#courses, #labs{
+#question1, #question2 , #question3{
   background-color: #333;
   margin: auto;
   width:  200px;
@@ -90,36 +90,38 @@ label, select{
     <div class="navbar">
         <div class="dropdown">
             <?php
-            echo '<form action="submit.php" method="post"><br>
-                  <label for="courses"><b> 1)  What does HTML stand for? </b></label>
-                  <select name="courses" id="courses">
-                <option class="droptext" value="ans1"> Hypertext Machine language</option>
-                  <option class="droptext" value="ans11 295"> Hyper Text Markup Language</option>
-                  <option class="droptext" value="ans111"> How to Make Lasagna </option>
-                  </select> <br> <br>  <br><br><br><br>
+            echo '<form action="submitAnswer.php" method="post"><br>
+                  <label for="question"><b> 1)  What does HTML stand for? </b></label>
+                  <select name="question1" id="question1">
+                  
+                <option class="droptext" value="A"> A) Hypertext Machine language</option>
+                  <option class="droptext" value="B"> B) Hyper Text Markup Language</option>
+                  <option class="droptext" value="C"> C) How to Make Lasagna </option>
+                  </select> <br> <br>  <br><br><br><br>s
                   <br> </div>
                    <br><br><br><br>
                   <div class="navbar">
                   <div class="dropdown">
-                  <label for="labs"><b> What is CSS? </b></label><br>
-                  <select name="labs" id="labs">
-                  <option class="droptext" value="ans2"> Cascading Style Sheets </option>
-                  <option class="droptext" value="ans22">  Style Sheets</option>
-                  <option class="droptext" value="ans222"> Sheets</option>
+                  <label for="question"><b> What is CSS? </b></label><br>
+                  <select name="question2" id="question2">
+                  <option class="droptext" value="A"> A)  Cascading Style Sheets </option>
+                  <option class="droptext" value="B"> B) Style Sheets</option>
+                  <option class="droptext" value="C"> C)  Sheets</option>
                   </select>  <br><br><br><br>
                   <br></div>
                    <br><br><br><br>
-                   <label for="labs"><b> What is SQL? </b></label><br>
-                  <select name="labs2" id="labs">
-                  <option class="droptext" value="lab1"> standard language </option>
-                  <option class="droptext" value="lab2"> Databases </option>
-                  <option class="droptext" value="lab3"> scripting language</option>
+                   <label for="question"><b> What is SQL? </b></label><br>
+                  <select name="question3" id="question3">
+                  <option class="droptext" value="A">  A) standard language </option>
+                  <option class="droptext" value="B"> B)  Databases </option>
+                  <option class="droptext" value="C">  C) scripting language</option>
                   </select>
                   <br></div>
                   <br><br><br><br>
                   
                   <input type="submit" class="submit" name="submit" value="Submit">
                   </form></div></div>';
+                  
                   
                   
                   
