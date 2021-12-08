@@ -22,7 +22,7 @@ h1 {
 
 <!-- The overlay -->
 <div class="topnav">
-  <a class="homePage" href="login.php">Home</a> 
+  <a class="homePage" href="loginQuestion.php">Home</a> 
   <br>
  
 </div>
@@ -31,9 +31,16 @@ h1 {
 
 <?php
 
-$x =$_POST['submit-button'];
-$y =$_POST['submit-button'];
-$b =$_POST['submit-button'];
+$x =$_POST['question1'];
+$y =$_POST['question2'];
+$b =$_POST['question3'];
+
+
+
+
+print_r($x);
+echo $y;
+echo $b;
 
 $servername = "localhost";
 $username = "root";
@@ -47,17 +54,20 @@ if ($conn->connect_error) {
 }
 
 // Create database
-$sql = "INSERT INTO `studentanswers` (`answer1`, `answer2`, `answer3`) VALUES ( '$x', '$y', '$b')"; 
+
+$sql = "INSERT INTO `studentanswers` (`answer1`, `answer2`, `answer3`) VALUES ( '$x', '$y', '$b'  )"; 
 if ($conn->query($sql) === TRUE) {
+	
 
 } else {
     echo "Error creating database: " .$sql  . "<br>" . $conn->error;
 }
+
+
 
 $conn->close();
 ?>
 
 </body>
 </html>
-
 
