@@ -1,138 +1,131 @@
-<!DOCTYPE HTML>  
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<title>CSCI Lab Login</title>
-</head>
-<style type="text/css">.error{color: red;}</style>
-<style>
-  Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color: floralwhite;  
-}  
-button {   
-       background-color: lightgreen;   
-       width: 100%;  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.submit {   
+       background-color: lightgreen;
+       width: 200px;
+       height: 40px;  
         color: black;   
-        padding: 15px;   
-        margin: 10px 0px;   
         border: none;   
-        cursor: pointer;   
-         }   
+        cursor: pointer; 
+        }
 
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid blueviolet;   
-        box-sizing: border-box;   
-    }  
-button:hover {   
-        opacity: 0.7;   
-    }   
-.signupbtn {   
-              width: auto;   
-              padding: 10px 18px;  
-              margin: 10px 5px;  
-              }   
-       .forgot {
-              width: auto;   
-              padding: 10px 18px;  
-              margin: 10px 5px;  
+.navbar {
+  overflow: hidden;
+  background-color: #689;
+  margin: auto;
+  width:  200px;
 
-              }
+  align-content: center;
+  text-align: center;
 
-       .container {   
-              padding: 25px;   
-              background-color: lightblue;
-              margin: 50px;  
-              }
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+  text-align: center;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .submit:hover {
+  background-color: lightblue;
+}
+
+
+.show {display: block;}
+
+
+#courses, #labs{
+  background-color: #333;
+  margin: auto;
+  width:  200px;
+  height:  40px;
+  align-content: center;
+  text-align: center;
+  text-decoration-color: white;
+}
+
+.droptext{
+  color: white;
+  text-align: center;
+}
+
+label, select{
+  color: white;
+}
+
 </style>
-<script>
-function passFunc() {
-  var x = document.getElementById("pass");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
-<body>  
+
+</head>
+
+<body>
 
 
-<?php
-// define variables and set to empty values
-$usernameErr = $passwordErr = "";
-$username = $password = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["username"])) {
-    $usernameErr = "Username is required";
-  } else {
-    $username = test_input($_POST["username"]);
-  }
-
-  if (empty($_POST["password"])) {
-    $passwordErr = "Password is required";
-  } else {
-    $password = test_input($_POST["password"]);
-  }
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+    <center>
+        <h1> Question  </h1>
+    </center>
+    <p> Answer This Question </p>
+    <div class="navbar">
+        <div class="dropdown">
+            <?php
+            echo '<form action="submit.php" method="post"><br>
+                  <label for="courses"><b> 1)  What does HTML stand for? </b></label>
+                  <select name="courses" id="courses">
+                <option class="droptext" value="ans1"> Hypertext Machine language</option>
+                  <option class="droptext" value="ans11 295"> Hyper Text Markup Language</option>
+                  <option class="droptext" value="ans111"> How to Make Lasagna </option>
+                  </select> <br> <br>  <br><br><br><br>
+                  <br> </div>
+                   <br><br><br><br>
+                  <div class="navbar">
+                  <div class="dropdown">
+                  <label for="labs"><b> What is CSS? </b></label><br>
+                  <select name="labs" id="labs">
+                  <option class="droptext" value="ans2"> Cascading Style Sheets </option>
+                  <option class="droptext" value="ans22">  Style Sheets</option>
+                  <option class="droptext" value="ans222"> Sheets</option>
+                  </select>  <br><br><br><br>
+                  <br></div>
+                   <br><br><br><br>
+                   <label for="labs"><b> What is SQL? </b></label><br>
+                  <select name="labs2" id="labs">
+                  <option class="droptext" value="lab1"> standard language </option>
+                  <option class="droptext" value="lab2"> Databases </option>
+                  <option class="droptext" value="lab3"> scripting language</option>
+                  </select>
+                  <br></div>
+                  <br><br><br><br>
+                  
+                  <input type="submit" class="submit" name="submit" value="Submit">
+                  </form></div></div>';
+                  
+                  
+                  
 ?>
 
-<center> <h1> Student Login Form </h1> </center>
-<!--<p class="error">* required fields</p>-->
-<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-<div class="container">  
- <label>Username : </label> 
-<input type="text" name="username" placeholder="Enter Username" required>
-<span class="error">* <?php echo $usernameErr;?></span>
-<br><br>
-<label>Password : </label>
-<input type="password" value="" id="pass" name="password" placeholder="Enter Password" required>
-<span class="error">* <?php echo $passwordErr;?></span><br>
-<input type="checkbox" onclick="passFunc()">Show Password
-<br>
-<button type="submit">Login</button> 
-<button type="button" class="forgot"> Forgot Password</button>
-<Button type="button" class="signupbtn"> Sign up</button>
-<input id= "rememberMe" type="checkbox" checked="checked"> Remember me
-</div>
-</form>
-
-<?php
-//use these variables to save to DB
-echo "<h2>User Inputs:</h2>";
-$userRv = $username;
-$passRv = $password;
-echo $userRv . " " . $passRv;
-
-# Variables for database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "finaldb";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Insert Username and Password using Prepared statement
-$stmt = $conn->prepare("INSERT INTO test (username, password) VALUES (?, ?)");
-$stmt->bind_param("ss", $userRv, $passRv);
-$stmt->execute()
-
-?>
+    <br><br>
 </body>
+
 </html>
