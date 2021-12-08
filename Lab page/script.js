@@ -103,7 +103,7 @@ Quiz.prototype.render = function(container) {
             }
 
             $('#quiz-retry-button').click(function() {
-                window.location.reload();
+                window.location.href = "CSCILab.php";
             });
 
         }
