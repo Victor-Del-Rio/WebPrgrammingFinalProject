@@ -3,52 +3,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>CSCI Lab Signup</title>
+  <link rel="stylesheet" href="css.css">
 </head>
 <style type="text/css">.error{color: red;}</style>
-<style>
-  Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color: floralwhite;  
-}  
-button {   
-       background-color: lightgreen;   
-       width: 100%;  
-        color: black;   
-        padding: 15px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;   
-         }   
 
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid blueviolet;   
-        box-sizing: border-box;   
-    }  
-button:hover {   
-        opacity: 0.7;   
-    }   
-.signupbtn {   
-              width: auto;   
-              padding: 10px 18px;  
-              margin: 10px 5px;  
-              }   
-       .forgot {
-              width: auto;   
-              padding: 10px 18px;  
-              margin: 10px 5px;  
-
-              }
-
-       .container {   
-              padding: 25px;   
-              background-color: lightblue;
-              margin: 50px;  
-              }
-</style>
 <script>
 function passFunc() {
   var x = document.getElementById("pass");
@@ -141,7 +99,7 @@ function test_input($data) {
 <input type="text" name="name" placeholder="Enter First and Last Name" required>
 <span class="error">* <?php echo $nameErr;?></span>
 <br><br>
-<button type="submit" class="signupbtn"> Sign up</button>
+<button type="submit" class="signupbtn" formaction="Signup.php"> Sign up</button>
 </div>
 </form>
 
@@ -170,6 +128,7 @@ if ($checkEmail === True AND $checkCard === True AND $checkName === True AND $ch
     $stmt = $conn->prepare("INSERT INTO users (beeCard, name, email, password) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $cardRv, $nameRv, $emailRv, $passRv);
     $stmt->execute();
+    header("Location: login.php");
   } catch (\mysqli_sql_exception $e) {
       if ($e->getCode() === 1062) {
           $error[] = "This Beecard number is already taken! <br> Please check your number and try again. <br> Please contact the admin if the your card number is not available for user creation.";
