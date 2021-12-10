@@ -31,16 +31,16 @@ h1 {
 
 <?php
 
-$x =$_POST['question1'];
-$y =$_POST['question2'];
-$b =$_POST['question3'];
+$question1 =$_POST['question1'];
+$question2 =$_POST['question2'];
+$question3 =$_POST['question3'];
 
 
 
 
-print_r($x);
-echo $y;
-echo $b;
+
+
+echo $question4;
 
 $servername = "localhost";
 $username = "root";
@@ -55,7 +55,7 @@ if ($conn->connect_error) {
 
 // Create database
 
-$sql = "INSERT INTO `studentanswers` (`answer1`, `answer2`, `answer3`) VALUES ( '$x', '$y', '$b'  )"; 
+$sql = "INSERT INTO `studentanswers` (`answer1`, `answer2`, `answer3`) VALUES ( '$question1', '$question2', '$question3'   )"; 
 if ($conn->query($sql) === TRUE) {
 	
 
@@ -63,11 +63,48 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating database: " .$sql  . "<br>" . $conn->error;
 }
 
+// write the query
+$result=mysqli_query($conn,"select answer1 from studentanswers Where answer4 = 'A' ");
 
+if($row=mysqli_fetch_array($result))
+{
+echo "The Correct Answer is  : ";
+         echo $row['answer1'].' <br> You Choose :  '.$question1.'<br/>';
+         
+
+ } else {
+ echo "  Answer Wrong
+  : <br>";
+ }
+
+$result=mysqli_query($conn,"select answer2 from studentanswers Where answer5 = 'A' ");
+
+if($row=mysqli_fetch_array($result))
+{
+echo "The Correct Answer is  : ";
+         echo $row['answer2'].' <br> You Choose :  '.$question2.'<br/>';
+         
+
+ } else {
+ echo "  Answer Wrong 
+  : <br>";
+ }
+
+$result=mysqli_query($conn,"select answer3 from studentanswers Where answer6 = 'C' ");
+
+if($row=mysqli_fetch_array($result))
+{
+echo "The Correct Answer is  : ";
+         echo $row['answer3'].' <br> You Choose :  '.$question3.'<br/>';
+         
+
+ } else {
+ echo "  Answer Wrong
+  : <br>";
+ }
 
 $conn->close();
 ?>
 
 </body>
 </html>
-
